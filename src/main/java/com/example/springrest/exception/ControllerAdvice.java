@@ -22,11 +22,10 @@ public class ControllerAdvice {
     @ExceptionHandler(TransactionSystemException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ProblemDetail handleConstrainException(TransactionSystemException ex) {
-        if (ex.getRootCause() instanceof ConstraintViolationException) {
-            ConstraintViolationException constraintViolationException = (ConstraintViolationException) ex.getRootCause();
+        if (ex.getRootCause() instanceof ConstraintViolationException constraintViolationException) {
 
             Set<ConstraintViolation<?>> constraintViolations = constraintViolationException.getConstraintViolations();
-            List<String> errorList = new ArrayList(constraintViolations.size());
+            List<String> errorList = new ArrayList<>(constraintViolations.size());
             for (final var constraint : constraintViolations) {
                 String message = constraint.getMessage();
                 String propertyPath = constraint.getPropertyPath().toString().split("\\.")[0]; //[2]

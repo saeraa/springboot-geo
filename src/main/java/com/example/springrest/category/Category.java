@@ -1,6 +1,5 @@
 package com.example.springrest.category;
 
-import com.example.springrest.location.Location;
 import com.example.springrest.validation.EmojiConstraint;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -10,7 +9,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
