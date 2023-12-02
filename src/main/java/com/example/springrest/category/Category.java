@@ -37,9 +37,6 @@ public class Category {
     @UpdateTimestamp
     private LocalDateTime modified;
 
-    @OneToMany
-    private List<Location> locations;
-
     public Category() {
     }
 

@@ -26,7 +26,6 @@ public class GeoCodeService {
     }
 
     @Retryable(retryFor = {RestClientException.class},
-            maxAttempts = 3,
             backoff = @Backoff(delay = 1000))
     public GeoCode reverseGeoCode(float lat, float lon) {
         return Objects.requireNonNull(restClient.get()

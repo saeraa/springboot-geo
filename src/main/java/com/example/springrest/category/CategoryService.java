@@ -25,7 +25,7 @@ public class CategoryService {
 
     public Category createNew(CategoryDto category) {
         var categoryCheck = categoryRepository.findCategoryByName(category.name());
-        if (!categoryCheck.isPresent()) {
+        if (categoryCheck.isEmpty()) {
             return save(category);
         }
         throw new IllegalArgumentException("Category with the name " + category.name() + " already exist.");
@@ -43,7 +43,7 @@ public class CategoryService {
         if (result.isPresent()) {
             return result;
         } else {
-            throw new ResourceNotFoundException("Category with the id " + id.toString() + " was not found.");
+            throw new ResourceNotFoundException("Category with the id " + id + " was not found.");
         }
     }
 }
